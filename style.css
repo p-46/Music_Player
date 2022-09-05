@@ -1,0 +1,91 @@
+*{
+    padding: 0%;
+    margin: 0%;
+    box-sizing:border-box ;
+}
+
+html{
+    font-family:"Jost",sans-serif;
+}
+
+.main{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw ;
+}
+
+.music_cont{
+    text-align: center;
+    background-color:rgb(221, 218, 218) ;
+    border-radius: 7px;
+    padding:2rem;
+    box-shadow: 0 1.2rem 3rem 0.5rem rgba(0,0,0,0.5);
+    width: 30%;
+}
+
+#title{
+    text-transform: uppercase;
+    letter-spacing: 0.15rem;
+    word-spacing: 0.4rem;
+    color:#171717;
+    margin:2rem 0 0.5rem 0;
+    font-size: 2.5rem;
+    font-weight: 400;
+    text-shadow: 0 0.3rem 0.5rem rgba(0,0,0,0.4);
+    width: 100%;
+}
+
+#artist{
+    text-transform: capitalize;
+    color:#cccaca;
+    font-size: 1.7rem;
+    letter-spacing: 0.2rem;
+    font-weight: 300;
+}
+
+img{
+    margin-top: 1rem;
+    height:15rem;
+    width:15rem;
+    border-radius: 50%;
+}
+.music_controls{
+    margin: 3rem 3rem 10px 3rem;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#play{
+    background-color: aliceblue;
+    justify-items: center;
+    border-radius: 50%;
+    padding:1rem;
+}
+
+.music_controls .fas:hover{
+    color:grey
+}
+
+#play:hover{
+    background-color:black;
+    color:white;
+    box-shadow: 0 1rem  2rem 0.2rem  rgba(0,0,0,0.2);
+
+}
+
+.anime{
+    animation: rotatePlayer 4s linear infinite;
+}
+
+@keyframes rotatePlayer{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+    

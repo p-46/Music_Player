@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Musiczzz</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" integrity="sha512-PgQMlq+nqFLV4ylk1gwUOgm6CtIIXkKwaIHp/PAIWHzig/lKZSEGKEysh0TCVbHJXCLN7WetD8TFecIky75ZfQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="main">
+        <div class="music_cont">
+            <h2 id="title">Shivers</h2>
+            <h3 id="artist">Ed Sheeran</h3>
+            <div class="image_cont">
+                <img src="oneimg.webp" alt="">
+            </div>
+            <div class="audio_cont">
+                <audio src="song1.mp3"></audio>
+
+            </div>
+            <div class="music_controls">
+
+                <i class="fas fa-backward" id="prev" title="Previous"></i>
+                <i class="fas fa-play" id="play" title="Play"></i> 
+                <i class="fas fa-forward" id="next" title="Next"></i>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <script>
+        const music=document.querySelector("audio");
+        const play=document.getElementById("play");
+        const image =document.querySelector("img");
+        const artist=document.getElementById("artist");
+        const title=document.getElementById("title");
+        const prev=document.getElementById("prev");
+        const next=document.getElementById("next");
+        let isplaying=false;
+
+        //FOR PLAY
+        const playMusic= () =>{
+            isplaying=true;
+            music.play();   //play fxn is inbuilt
+            play.classList.replace('fa-play','fa-pause')
+            image.classList.add('anime')
+        };
+
+
+        //FOR PAUSE
+        const stopMusic =  () =>{
+            isplaying=false;
+            music.pause();   //play fxn is inbuilt
+            play.classList.replace('fa-pause','fa-play')
+            image.classList.remove('anime')
+        };
+
+
+        play.addEventListener('click', ()=>{
+            if(isplaying){
+                stopMusic();
+
+            }
+            else{
+                playMusic();
+
+            }
+        })
+
+
+
+        const songs=[{
+                name:"song1",
+                title:"Shivers",
+                artist:"Ed Sheeran",
+                image:"oneimg" 
+            },
+            {
+                name:"song2",
+                title:"Beg for You",
+                artist:"Charlie Puth",
+                image:"twoimg"
+
+            },
+            {
+                name:"song3",
+                title:"From my Hand",
+                artist:"Ed Sheeran",
+                image:"threeimg"
+            },
+            {
+                name:"song4",
+                title:"Right Left",
+                artist:"Kulwinder Billa",
+                image:"fourimg"
+
+            }
+            ];
+
+
+            //CHANGING MUSIC DATA 
+            const loadsongs=(songs)=> {
+                title.textContent=songs.title;
+                artist.textContent=songs.artist;
+                music.src=songs.name + ".mp3";
+                image.src=songs.image + ".webp";
+                playMusic();
+            };
+
+
+            //loadsongs(songs[2]);
+
+            songindex=0;
+            const nextSong = ()=>{
+                songindex = (songindex + 1) % songs.length;
+                loadsongs(songs[songindex])
+
+            }
+
+            const prevSong = ()=>{
+                songindex = (songindex - 1);
+                if (songindex < 0) 
+                    songindex += songs.length;
+                loadsongs(songs[songindex])
+
+            }
+
+            next.addEventListener("click",nextSong);
+            prev.addEventListener("click",prevSong);
+    </script>
+    
+</body>
+</html>
